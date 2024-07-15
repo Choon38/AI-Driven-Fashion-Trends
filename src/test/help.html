@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title>Active Segmentation help</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='help.css' rel='stylesheet' type='text/css' /> 
+<meta content='help.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+  <div class='maketitle'>
+  <h2 class='titleHead'>
+ACTIVE SEGMENTATION HELP
+  </h2>
+  <div class='authors'><span class='author'>
+<span class='cmr-8'>DIMITER PRODANOV</span>
+  </span></div>
+<div class='submaketitle'>
+</div>
+  </div>
+  <h3 class='sectionHead'><span class='titlemark'>1. </span> <a id='x1-10001'></a>The \(\alpha \)-scale spaces</h3>
+<!-- l. 15 --><p class='noindent'>Pauwels et al. <span class='cite'>[<a href='#XPauwels1995'>4</a>]</span> and later Duits et al. <span class='cite'>[<a href='#XDuits2003'>1</a>]</span> introduced the \(\alpha \)-scale spaces for image
+processing. The basis of the approach is a generalized heat equation. The resulting
+convolution kernels can be described best by the tools of fractional calculus. The kernel
+evolution is governed by two parameters - the scale <span class='cmti-10'>s </span>and the order of differentiation \(\alpha \).
+The approach leads to the fractional heat problem: \begin {flalign*}  u\left (0, \mathbf {x} \right ) &amp;= I\left ( \mathbf {x} \right ) \\ \partial _s u \left ( s, \mathbf {x} \right ) &amp; = - (-\Delta )^{\alpha } u\left ( s, \mathbf {x} \right ) , \quad 0 \leq \alpha \leq 1  \end {flalign*}
+</p><!-- l. 25 --><p class='indent'>  where the Riesz fractional Laplacian operator is defined in the Fourier domain by: \[ (-\Delta )^{\alpha } U ( \mathbf {k} ) := k^{2\alpha } U ( \mathbf {k} ), \quad k= |\mathbf {k}|, \]
+where the \(k\) is the modulus of the wave vector \(\mathbf {k} \). Formally, the operator is extended by
+continuity for \(\alpha =1\) as \( (-\Delta )^{1} \mapsto k^2 \), which corresponds to the usual Laplacian; and to identity for \(\alpha =0\),
+corresponding to invariance in the spatial domain.
+</p>
+  <h3 class='sectionHead'><span class='titlemark'>2. </span> <a id='x1-20002'></a>Differential Invariants</h3>
+<!-- l. 36 --><p class='noindent'>There are several types of geometric features useful for image segmentation. Typical
+interesting image features are blobs, filaments and corners. The normal Laplacian \(\Delta _{ \perp G}\)
+presented above is sensitive to blobs, while its complement – the tangential Laplacian \(\Delta _{ || G}\) is
+sensitive to filaments. The weak Hessian tensor with respect to the kernel <span class='cmti-10'>G </span>is defined as
+the tensor product \[ \mathbb {H}_G (F) := \nabla _G \otimes \nabla _G F \] For differentiable signals, the Hessian is symmetric and can be
+regarded as a metric tensor.
+</p><!-- l. 46 --><p class='indent'>  In Cartesian coordinates, this can be specialized to the usual formula \[ \mathbb {H}_G (F)= \left ( \begin {array}{ll} G_{xx} &amp; G_{xy} \\ G_{xy} &amp; G_{yy} \end {array} \right ) \star F \] where
+subscripts denote differentiation by coordinate variables. Furthermore, for the trace holds
+\[ \mathrm {Tr} \,\mathbb {H}_G (F) = \nabla _G^2 F = \Delta _{G} F \] where \( \Delta _{G}\) denotes the weak Laplacian operator. The eigenvalues \(\lambda _{1,2}\) can be determined locally
+from the equation \begin {equation}  \mathrm {det} (\mathbb {H}_G (F)- \lambda \mathbb {I} )=0  \end {equation}
+</p><!-- l. 65 --><p class='indent'>  Various differential invariants computed by the AS/IJ platform are presented in
+Table <a href='#x1-20011'>1<!-- tex4ht:ref: tab:filters  --></a>. Notable differential invariants are the amplitude \(|\nabla _{G} F|\) and the orientation
+of the gradient, the Hessian determinant, the Hessian eigenvalues, as well as
+the isophote \(\kappa \) and tangential curvatures \(\mu \) <span class='cite'>[<a href='#XFlorack1992'>2</a>]</span>. Up to a sign convention we have \begin {flalign}  \kappa &amp; = \nabla _G \cdot \mathbf {n}^0 \\ \mu &amp; = \nabla _G \cdot \mathbf {\tau }, \quad \mathbf {\tau }= \mathbf {n}^{0} \cdot I_2  \end {flalign}
+
+</p><!-- l. 72 --><p class='indent'>  where \(I_2\) is the pseudoscalar of the Euclidean image plane. From the perspective of
+scale space theory the study of the differential invariants of the image reduce to
+the study of the differential invariants of the radially symmetric Riesz heat
+kernel.
+
+</p><!-- l. 78 --><p class='indent'>  <a id='x1-20011'></a></p><figure class='float'>
+
+<div class='tabular'> <table class='tabular' id='TBL-1'><colgroup id='TBL-1-1g'><col id='TBL-1-1' /><col id='TBL-1-2' /><col id='TBL-1-3' /></colgroup><tr class='hline'><td></td><td></td><td></td></tr><tr id='TBL-1-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-1-1' style='white-space:nowrap; text-align:left;'>Filter                 </td><td class='td11' id='TBL-1-1-2' style='white-space:nowrap; text-align:left;'>Functionality                                  </td><td class='td11' id='TBL-1-1-3' style='white-space:nowrap; text-align:left;'>Feature order</td>
+</tr><tr class='hline'><td></td><td></td><td></td></tr><tr id='TBL-1-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-2-1' style='white-space:nowrap; text-align:left;'>Gauss2D              </td><td class='td11' id='TBL-1-2-2' style='white-space:nowrap; text-align:left;'>Gaussian smoothing                         </td><td class='td11' id='TBL-1-2-3' style='white-space:nowrap; text-align:left;'>0                </td>
+</tr><tr id='TBL-1-3-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-3-1' style='white-space:nowrap; text-align:left;'>Gradient              </td><td class='td11' id='TBL-1-3-2' style='white-space:nowrap; text-align:left;'>Gradient amplitude and orientation     </td><td class='td11' id='TBL-1-3-3' style='white-space:nowrap; text-align:left;'>1                </td>
+</tr><tr id='TBL-1-4-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-4-1' style='white-space:nowrap; text-align:left;'>Gaussian Structure</td><td class='td11' id='TBL-1-4-2' style='white-space:nowrap; text-align:left;'>Structure tensor                              </td><td class='td11' id='TBL-1-4-3' style='white-space:nowrap; text-align:left;'>1                </td>
+</tr><tr id='TBL-1-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-5-1' style='white-space:nowrap; text-align:left;'>LoG                    </td><td class='td11' id='TBL-1-5-2' style='white-space:nowrap; text-align:left;'>Laplacian of Gaussian (LoG)             </td><td class='td11' id='TBL-1-5-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-6-1' style='white-space:nowrap; text-align:left;'>ALoG                 </td><td class='td11' id='TBL-1-6-2' style='white-space:nowrap; text-align:left;'>Anisotropic decomposition of LoG       </td><td class='td11' id='TBL-1-6-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-7-1' style='white-space:nowrap; text-align:left;'>                </td><td class='td11' id='TBL-1-7-2' style='white-space:nowrap; text-align:left;'>Gradient amplitude and orientation     </td><td class='td11' id='TBL-1-7-3' style='white-space:nowrap; text-align:left;'>1                </td>
+</tr><tr id='TBL-1-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-8-1' style='white-space:nowrap; text-align:left;'>Hessian               </td><td class='td11' id='TBL-1-8-2' style='white-space:nowrap; text-align:left;'>Eigenvalues of the Hessian                 </td><td class='td11' id='TBL-1-8-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-9-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-9-1' style='white-space:nowrap; text-align:left;'>                </td><td class='td11' id='TBL-1-9-2' style='white-space:nowrap; text-align:left;'>Determinant of the Hessian               </td><td class='td11' id='TBL-1-9-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-10-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-10-1' style='white-space:nowrap; text-align:left;'>Curvature 2D       </td><td class='td11' id='TBL-1-10-2' style='white-space:nowrap; text-align:left;'>Line curvatures + Hessian determinant</td><td class='td11' id='TBL-1-10-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-11-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-11-1' style='white-space:nowrap; text-align:left;'>Curvature 3D       </td><td class='td11' id='TBL-1-11-2' style='white-space:nowrap; text-align:left;'>Mean + Gauss curvature of surfaces    </td><td class='td11' id='TBL-1-11-3' style='white-space:nowrap; text-align:left;'>2                </td>
+</tr><tr id='TBL-1-12-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-12-1' style='white-space:nowrap; text-align:left;'>BoG                   </td><td class='td11' id='TBL-1-12-2' style='white-space:nowrap; text-align:left;'>Bi-Laplacian of Gaussian                   </td><td class='td11' id='TBL-1-12-3' style='white-space:nowrap; text-align:left;'>4                </td>
+</tr><tr id='TBL-1-13-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-13-1' style='white-space:nowrap; text-align:left;'>Gaussian Jet        </td><td class='td11' id='TBL-1-13-2' style='white-space:nowrap; text-align:left;'>Gaussian Jet of order n                     </td><td class='td11' id='TBL-1-13-3' style='white-space:nowrap; text-align:left;'>n                </td>
+</tr><tr id='TBL-1-14-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-14-1' style='white-space:nowrap; text-align:left;'>LoGN                 </td><td class='td11' id='TBL-1-14-2' style='white-space:nowrap; text-align:left;'>n-th order PoL                                </td><td class='td11' id='TBL-1-14-3' style='white-space:nowrap; text-align:left;'>2n               </td>
+</tr><tr id='TBL-1-15-' style='vertical-align:baseline;'><td class='td11' id='TBL-1-15-1' style='white-space:nowrap; text-align:left;'>FFT Kernel LoG   </td><td class='td11' id='TBL-1-15-2' style='white-space:nowrap; text-align:left;'>Riesz Laplacian                               </td><td class='td11' id='TBL-1-15-3' style='white-space:nowrap; text-align:left;'>\(\alpha \in \mathbb {R}\)           </td>
+</tr><tr class='hline'><td></td><td></td><td></td></tr></table></div>
+<figcaption class='caption'><span class='id'>Table 1: </span><span class='content'>Filters computing geometric features<span class='cite'>[<a href='#XVohra2021'>5</a>]</span></span></figcaption><!-- tex4ht:label?: x1-20011  -->
+
+  </figure>
+<!-- l. 106 --><p class='indent'>  Line curvature \[ \frac { G_{xx} G_{y}^2 - 2 G_{x} G_{y} G_{xy} + G_{x}^2 G_{yy}} {\left ( G_{x}^2 +G_{y}^2\right )^{3/2}} \]
+</p><!-- l. 111 --><p class='indent'>  Mean curvature \[ \frac {1 }{2}\frac {\left ( 1+G_{x}^2\right ) G_{yy} - 2 G_{x} G_{y} G_{xy} +\left (1 +G_{y}^2 \right ) G_{xx} } {\left ( 1 + G_{x}^2 +G_{y}^2\right )^{3/2}} \] Gaussian curvature \[ \frac {G_{xx} G_{yy} - G_{xy}^2} {\left ( 1 + G_{x}^2 +G_{y}^2\right )^2 } \]
+</p>
+  <h3 class='sectionHead'><span class='titlemark'>3. </span> <a id='x1-30003'></a>Orthogonal Laplacian Decomposition (LOD)</h3>
+<!-- l. 126 --><p class='noindent'>The simple representation of the gradient introduced above can be extended to a
+coordinate independent (!) operator using the tools of Geometric Algebra and Calculus.
+Readers are directed to <span class='cite'>[<a href='#XMacdonald2016'>3</a>]</span> for an introductory material on the subject. The Laplace
+operator can be decomposed in two orthogonal components– on in the direction of the
+isophote and the other in the direction normal to the isophotes. The Laplacian of scalar
+function <span class='cmti-10'>F </span>can be decomposed into a normal component and tangential component, thus
+breaking the isotropy of the original operator \[ \nabla ^2 F = \left ( \mathbf {n}^0 \cdot \nabla \right )^2 F + \left ( \mathbf {n}^0 \cdot \nabla F\right ) \nabla \cdot \mathbf {n}^0, \] where \(\mathbf {n} =\nabla F\) is the gradient, \(\mathbf {n}^0\) is the unit normal
+vector to the isophote curve \( F (x,y) =c\), \[ \quad \mathbf {n}^0 = {\mathbf {n} }/{|\mathbf {n} |} \] and \( \mathbf {n}^0 \cdot \nabla \) denotes the directional derivative. Then \begin {flalign}  \Delta _{\perp G} &amp;= \left ( \mathbf {n}^0 \cdot \nabla _G\right )^2 \\ \Delta _{|| G} &amp;= \left ( \nabla _G \cdot \mathbf {n}^0\right ) \left ( \mathbf {n}^0 \cdot \nabla _G \right )  \end {flalign}
+</p><!-- l. 143 --><p class='indent'>  This is a coordinate-free definition of \(\Delta _{\perp }\) and \(\Delta _{|| }\), which can be specialized to any smooth
+coordinate system. This comes in contrast to the approach of ”gauge coordinates”
+employed in <span class='cite'>[<a href='#XFlorack1992'>2</a>]</span>. For example, in Cartesian coordinates the LOD can be represented by \begin {flalign}  \left ( G_x^2+ G_y^2 \right ) \Delta _{ \perp G} &amp; = \left ( G_x^2 \right ) G_{xx} + \left ( 2 G_x G_y \right ) G_{xy} + \left ( G_y ^2\right ) G_{yy} \label {ed:lapo} \\ \left ( G_x^2+ G_y^2 \right ) \Delta _{|| G} &amp;= \left ( G_x^2\right ) G_{xx} - \left ( 2 G_x G_y \right ) G_{xy} + \left ( G_y ^2\right ) G_{yy} \label {ed:lapt}  \end {flalign}
+</p>
+  <h3 class='sectionHead'><a id='x1-40003'></a>References</h3>
+<!-- l. 1 --><p class='noindent'>
+   </p><div class='thebibliography'>
+   <p class='bibitem'><span class='biblabel'>
+<span class='cmr-8'>[1] </span><span class='bibsp'><span class='cmr-8'>   </span></span></span><a id='XDuits2003'></a><span class='cmr-8'>R. Duits,  M. Felsberg,  L. Florack,  and  B. Platel.  Alpha-scale  spaces  on  a  bounded
+   </span><span class='cmr-8'>domain. scale space methods in computer vision. </span><span class='cmti-8'>494- 510. Springer</span><span class='cmr-8'>, 2003.</span>
+   </p>
+   <p class='bibitem'><span class='biblabel'>
+<span class='cmr-8'>[2] </span><span class='bibsp'><span class='cmr-8'>   </span></span></span><a id='XFlorack1992'></a><span class='cmr-8'>L. M J Florack, B. M ter Haar Romeny, J. J Koenderink, and M. A Viergever. Scale
+   </span><span class='cmr-8'>and the differential structure of images. </span><span class='cmti-8'>Image and Vision Computing</span><span class='cmr-8'>, 10:376–388, 1992.</span>
+   </p>
+   <p class='bibitem'><span class='biblabel'>
+<span class='cmr-8'>[3] </span><span class='bibsp'><span class='cmr-8'>   </span></span></span><a id='XMacdonald2016'></a><span class='cmr-8'>A. Macdonald. A survey of geometric algebra and geometric calculus. </span><span class='cmti-8'>Advances in Applied
+   </span><span class='cmti-8'>Clifford Algebras</span><span class='cmr-8'>, pages 1–39, 2016.</span>
+   </p>
+   <p class='bibitem'><span class='biblabel'>
+<span class='cmr-8'>[4] </span><span class='bibsp'><span class='cmr-8'>   </span></span></span><a id='XPauwels1995'></a><span class='cmr-8'>E. J  Pauwels,  L. J.  Van Gool,  P. Fiddelaers,  and  T. Moons.  An  extended  class  of
+   </span><span class='cmr-8'>scale-invariant and recursive scale space filters. </span><span class='cmti-8'>Pattern Analysis and Machine Intelligence,
+   </span><span class='cmti-8'>IEEE Transactions on</span><span class='cmr-8'>, 17(7):691–701, 1995.</span>
+   </p>
+   <p class='bibitem'><span class='biblabel'>
+<span class='cmr-8'>[5] </span><span class='bibsp'><span class='cmr-8'>   </span></span></span><a id='XVohra2021'></a><span class='cmr-8'>S. K. Vohra and D. Prodanov. The active segmentation platform for microscopic image
+   </span><span class='cmr-8'>classification and segmentation. </span><span class='cmti-8'>Brain Sciences</span><span class='cmr-8'>, 11(12):1645, dec 2021.</span>
+</p>
+   </div>
+   
+</body> 
+</html>
