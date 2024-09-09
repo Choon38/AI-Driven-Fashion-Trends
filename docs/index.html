@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trends</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Fashion Trends Overview</h1>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Welcome to Fashion Trends</h2>
+            <p>Explore the latest fashion trends and predictions for the coming years. Our interactive visualizations provide insights into how different clothing types have evolved over time and offer projections for future trends. From T-shirts to ankle boots, discover which styles are gaining popularity and how they might look in the near future.</p>
+        </section>
+
+        <section class="section">
+            <h2>Fashion Trends Projection (2022-2027)</h2>
+            <p>Our projection model shows the anticipated trends in clothing types from 2022 to 2027. The visual representation helps you understand how different styles are expected to perform over the years. Use this information to stay ahead in the fashion industry and make informed decisions.</p>
+            <img src="data:image/png;base64,{{ graph_url }}" alt="Fashion Trends Projection">
+        </section>
+
+        <section class="section">
+            <h2>Yearly Trends</h2>
+            <p>Select a clothing type to see detailed trends over the years.</p>
+            <form action="/show_trends" method="post">
+                <div class="form-group">
+                    <label for="clothing_type">Select Clothing Type:</label>
+                    <select name="clothing_type" id="clothing_type">
+                        {% for ct in class_names %}
+                        <option value="{{ ct }}">{{ ct }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit">Show Trends</button>
+            </form>
+        </section>
+
+        <section class="section">
+            <h2>Top Trends Per Year</h2>
+            <p>Discover the top fashion trends for each year based on our analysis. See which clothing types are leading the trend charts annually.</p>
+        </section>
+
+        <section class="section">
+            <h2>Top 5 Future Fashion Trends</h2>
+            <p>Get a glimpse of the top 5 fashion trends that are expected to dominate the future. Stay ahead of the curve with these predictions and incorporate them into your fashion strategy.</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Fashion Trends. All rights reserved.</p>
+    </footer>
+</body>
+</html>
