@@ -19,3 +19,7 @@ AI-Driven Fashion Trends is a project aimed at predicting future fashion trends 
    ```bash
    git clone https://github.com/Choon38/AI-Driven-Fashion-Trends.git
    cd AI-Driven-Fashion-Trends
+
+   ### Trend Analysis
+![Screenshot 2024-09-09 220230](https://github.com/user-attachments/assets/49ed3183-b993-4522-b90b-8c9d85c7bc33)
+![Uploading Screenshot_2024-09-04-20-19-07-13.jpg…]()
